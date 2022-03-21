@@ -1,0 +1,29 @@
+# Definition for a binary tree node.
+#PRE_ORDER TRAVERSAL IN  TREE USING STACK.
+
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+        
+class Solution(object):
+    def preorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        stack = []
+        preorderSeq = []
+        current = root
+        while True:
+            if current is not None:
+                preorderSeq.append(current.val) 
+                stack.append(current)
+                current = current.left
+            elif(stack):
+                current=stack.pop()
+                current = current.right
+            else:
+                break
+        return preorderSeq        
